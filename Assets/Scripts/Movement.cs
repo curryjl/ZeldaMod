@@ -2,9 +2,9 @@
 
 public class Movement : MonoBehaviour
 {
-    private readonly float _min = -0.010f;
-    private readonly float _max = 0.010f;
-    private readonly float _speed = .75f;
+    private const float Min = -0.010f;
+    private const float Max = 0.010f;
+    private const float Speed = .75f;
     private string _lastDirectionalInputValue = "Up";
 
     public string DirectionalInput = string.Empty;
@@ -20,22 +20,22 @@ public class Movement : MonoBehaviour
 
 	    if (DirectionalInput == "Left" && canMoveLeft)
 	    {
-	        movementSpeed = Mathf.Clamp(_speed * -1 * Time.deltaTime, _min, _max);
+	        movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
 	        transform.Translate(movementSpeed, 0f, 0f);
         }
         else if (DirectionalInput == "Right" && canMoveRight)
 	    {
-	        movementSpeed = Mathf.Clamp(_speed * 1 * Time.deltaTime, _min, _max);
+	        movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
             transform.Translate(movementSpeed, 0f, 0f);
         }
         else if (DirectionalInput == "Up" && CanMoveForward)
 	    {
-	        movementSpeed = Mathf.Clamp(_speed * 1 * Time.deltaTime, _min, _max);
+	        movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
 	        transform.Translate(0f, movementSpeed, 0f);
         }
         else if (DirectionalInput == "Down" && canMoveDown)
 	    {
-	        movementSpeed = Mathf.Clamp(_speed * -1 * Time.deltaTime, _min, _max);
+	        movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
             transform.Translate(0f, movementSpeed, 0f);
         }
 

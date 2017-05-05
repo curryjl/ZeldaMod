@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
     private const float Speed = .75f;
     private string _lastDirectionalInputValue = "Up";
 
-    public string DirectionalInput = string.Empty;
     public bool CanMoveForward = true;
 
     public bool canMoveDown = true;
@@ -16,30 +15,35 @@ public class Movement : MonoBehaviour
 
 	void Update ()
 	{
-	    float movementSpeed = 0;
+	    Move();
+	}
 
-	    if (DirectionalInput == "Left" && canMoveLeft)
-	    {
-	        movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
-	        transform.Translate(movementSpeed, 0f, 0f);
-        }
-        else if (DirectionalInput == "Right" && canMoveRight)
-	    {
-	        movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
+    private void Move()
+    {
+        float movementSpeed = 0;
+
+        if (Player.Instance.Input == "Left" && canMoveLeft)
+        {
+            movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
             transform.Translate(movementSpeed, 0f, 0f);
         }
-        else if (DirectionalInput == "Up" && CanMoveForward)
-	    {
-	        movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
-	        transform.Translate(0f, movementSpeed, 0f);
+        else if (Player.Instance.Input == "Right" && canMoveRight)
+        {
+            movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
+            transform.Translate(movementSpeed, 0f, 0f);
         }
-        else if (DirectionalInput == "Down" && canMoveDown)
-	    {
-	        movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
+        else if (Player.Instance.Input == "Up" && CanMoveForward)
+        {
+            movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
+            transform.Translate(0f, movementSpeed, 0f);
+        }
+        else if (Player.Instance.Input == "Down" && canMoveDown)
+        {
+            movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
             transform.Translate(0f, movementSpeed, 0f);
         }
 
         // Should never hold the value None
-	    _lastDirectionalInputValue = DirectionalInput != "None" ? DirectionalInput : _lastDirectionalInputValue;
+        _lastDirectionalInputValue = Player.Instance.Input != "None" ? Player.Instance.Input : _lastDirectionalInputValue;
     }
 }

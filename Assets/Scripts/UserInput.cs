@@ -3,8 +3,8 @@
 public class UserInput : MonoBehaviour
 {
 	void Update ()
-    {
-        Player.Instance.MoveScript.DirectionalInput = GetInput();
+	{
+	    Player.Instance.Input = GetInput();
     }
 
     private string GetInput()
@@ -17,7 +17,16 @@ public class UserInput : MonoBehaviour
             return "Up";
         if (Input.GetKey(KeyCode.S))
             return "Down";
-        else
-            return "None";
+
+        if (Input.GetKeyUp(KeyCode.A))
+            return "LeftIsUp";
+        if (Input.GetKeyUp(KeyCode.D))
+            return "RightIsUp";
+        if (Input.GetKeyUp(KeyCode.W))
+            return "UpIsUp";
+        if (Input.GetKeyUp(KeyCode.S))
+            return "DownIsUp";
+
+        return "None";
     }
 }

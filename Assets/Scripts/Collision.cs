@@ -2,10 +2,10 @@
 
 public class Collision : MonoBehaviour
 {
+    private const float DiagRaycastLen = 0.1f;
+    private const float RaycastLen = 0.07f;
     private BoxCollider2D _boxCollider2D;
     private readonly RaycastHit2D[] _results = new RaycastHit2D[10];
-    private const float RaycastLen = 0.07f;
-    private const float DiagRaycastLen = 0.1f;
 
     void Awake()
     {

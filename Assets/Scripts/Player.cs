@@ -3,11 +3,13 @@
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
-
     public Movement MoveScript { get; private set; }
     public UserInput UserInputScript { get; private set; }
     public Collision CollisionsScript { get; private set; }
-    public int Health { get; private set; }
+    public AnimatorComponent PlayerAnimator { get; private set; }
+    public string Input { get; set; }
+
+    private int _health = 3;
 
     void Awake ()
     {
@@ -17,13 +19,11 @@ public class Player : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
             Destroy(gameObject);
-        }
 
         MoveScript = GetComponent<Movement>();
         UserInputScript = GetComponent<UserInput>();
         CollisionsScript = GetComponent<Collision>();
-        Health = 3;
+        PlayerAnimator = GetComponent<AnimatorComponent>();
     }
 }

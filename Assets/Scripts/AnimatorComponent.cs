@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AnimatorComponent : MonoBehaviour
 {
@@ -20,10 +18,7 @@ public class AnimatorComponent : MonoBehaviour
     {
         foreach (var key in Direction.KeysDown)
         {
-            if (Player.Instance.Input == key)
-                Animator.SetBool(key, true);
-            else
-                Animator.SetBool(key, false);
+            Animator.SetBool(key, Player.Instance.Input == key);
         }
     }
 }

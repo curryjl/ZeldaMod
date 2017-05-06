@@ -10,8 +10,7 @@ public class Player : MonoBehaviour
     public bool CanMoveDown = true;
     public bool CanMoveRight = true;
     public bool CanMoveLeft = true;
-
-    private int _health = 3;
+    public int Health = 3;
 
     void Awake ()
     {

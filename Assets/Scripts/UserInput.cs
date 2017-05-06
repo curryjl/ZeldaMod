@@ -1,32 +1,33 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Interfaces;
+using UnityEngine;
 
 public class UserInput : MonoBehaviour
 {
-	void Update ()
-	{
-	    Player.Instance.Input = GetInput();
+    void Update()
+    {
+        Player.Instance.Input = GetInput();
     }
 
     private string GetInput()
     {
         if (Input.GetKey(KeyCode.A))
-            return "Left";
+            return Direction.LeftKeyDown;
         if (Input.GetKey(KeyCode.D))
-            return "Right";
+            return Direction.RightKeyDown;
         if (Input.GetKey(KeyCode.W))
-            return "Up";
+            return Direction.UpKeyDown;
         if (Input.GetKey(KeyCode.S))
-            return "Down";
+            return Direction.DownKeyDown;
 
         if (Input.GetKeyUp(KeyCode.A))
-            return "LeftIsUp";
+            return Direction.LeftKeyUp;
         if (Input.GetKeyUp(KeyCode.D))
-            return "RightIsUp";
+            return Direction.RightKeyUp;
         if (Input.GetKeyUp(KeyCode.W))
-            return "UpIsUp";
+            return Direction.UpKeyUp;
         if (Input.GetKeyUp(KeyCode.S))
-            return "DownIsUp";
+            return Direction.DownKeyUp;
 
-        return "None";
+        return Direction.NoneKey;
     }
 }

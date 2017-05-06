@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Interfaces;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
-    public Movement MoveScript { get; private set; }
-    public UserInput UserInputScript { get; private set; }
-    public Collision CollisionsScript { get; private set; }
-    public AnimatorComponent PlayerAnimator { get; private set; }
-    public string Input { get; set; }
+
+    public string Input = Direction.NoneKey;
+    public bool CanMoveUp = true;
+    public bool CanMoveDown = true;
+    public bool CanMoveRight = true;
+    public bool CanMoveLeft = true;
 
     private int _health = 3;
 
@@ -20,10 +22,5 @@ public class Player : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
-        MoveScript = GetComponent<Movement>();
-        UserInputScript = GetComponent<UserInput>();
-        CollisionsScript = GetComponent<Collision>();
-        PlayerAnimator = GetComponent<AnimatorComponent>();
     }
 }

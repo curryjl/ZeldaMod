@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
@@ -6,12 +7,6 @@ public class Movement : MonoBehaviour
     private const float Max = 0.010f;
     private const float Speed = .75f;
     private string _lastDirectionalInputValue = "Up";
-
-    public bool CanMoveForward = true;
-
-    public bool canMoveDown = true;
-    public bool canMoveRight = true;
-    public bool canMoveLeft = true;
 
 	void Update ()
 	{
@@ -22,22 +17,22 @@ public class Movement : MonoBehaviour
     {
         float movementSpeed = 0;
 
-        if (Player.Instance.Input == "Left" && canMoveLeft)
+        if (Player.Instance.Input == "Left" && Player.Instance.CanMoveLeft)
         {
             movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
             transform.Translate(movementSpeed, 0f, 0f);
         }
-        else if (Player.Instance.Input == "Right" && canMoveRight)
+        else if (Player.Instance.Input == "Right" && Player.Instance.CanMoveRight)
         {
             movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
             transform.Translate(movementSpeed, 0f, 0f);
         }
-        else if (Player.Instance.Input == "Up" && CanMoveForward)
+        else if (Player.Instance.Input == "Up" && Player.Instance.CanMoveUp)
         {
             movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
             transform.Translate(0f, movementSpeed, 0f);
         }
-        else if (Player.Instance.Input == "Down" && canMoveDown)
+        else if (Player.Instance.Input == "Down" && Player.Instance.CanMoveDown)
         {
             movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
             transform.Translate(0f, movementSpeed, 0f);

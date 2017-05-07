@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public static class Direction
 {
-    public static List<string> KeysDown = new List<string>()
+    public static readonly List<string> Directions = new List<string>()
     {
         "Left",
         "Right",
         "Up",
         "Down",
+    };
+
+    public static readonly Dictionary<string, Vector2> VectorDirections = new Dictionary<string, Vector2>()
+    {
+        {"Up", Vector2.up},
+        {"Down", Vector2.down},
+        {"Left", Vector2.left},
+        {"Right", Vector2.right}
     };
 
     public static Dictionary<string, string> KeysUp = new Dictionary<string, string>()
@@ -21,10 +30,10 @@ public static class Direction
         {"DownIsUp", "Down"}
     };
 
-    public static string LeftKeyDown = "Left";
-    public static string RightKeyDown = "Right";
-    public static string UpKeyDown = "Up";
-    public static string DownKeyDown = "Down";
+    public static string Left = "Left";
+    public static string Right = "Right";
+    public static string Up = "Up";
+    public static string Down = "Down";
 
     public static string LeftKeyUp = "LeftIsUp";
     public static string RightKeyUp = "RightIsUp";

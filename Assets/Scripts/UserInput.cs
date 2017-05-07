@@ -6,18 +6,20 @@ public class UserInput : MonoBehaviour
     void Update()
     {
         Player.Instance.Input = GetInput();
+        if (Direction.Directions.Contains(Player.Instance.Input))
+            Player.Instance.LastDirectionalInput = Player.Instance.Input;
     }
 
     private string GetInput()
     {
         if (Input.GetKey(KeyCode.A))
-            return Direction.LeftKeyDown;
+            return Direction.Left;
         if (Input.GetKey(KeyCode.D))
-            return Direction.RightKeyDown;
+            return Direction.Right;
         if (Input.GetKey(KeyCode.W))
-            return Direction.UpKeyDown;
+            return Direction.Up;
         if (Input.GetKey(KeyCode.S))
-            return Direction.DownKeyDown;
+            return Direction.Down;
 
         if (Input.GetKeyUp(KeyCode.A))
             return Direction.LeftKeyUp;

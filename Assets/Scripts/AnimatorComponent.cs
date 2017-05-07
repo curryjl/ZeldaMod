@@ -16,7 +16,7 @@ public class AnimatorComponent : MonoBehaviour
 
     private void SetAnimatorParamaters()
     {
-        foreach (var key in Direction.KeysDown)
+        foreach (var key in Direction.Directions)
         {
             Animator.SetBool(key, Player.Instance.Input == key);
         }

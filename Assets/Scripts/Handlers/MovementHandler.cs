@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Singletons;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Singletons;
 using Assets.Scripts.Static;
 using UnityEngine;
 
@@ -18,24 +19,24 @@ namespace Assets.Scripts.Handlers
 
         private void Move()
         {
-            float movementSpeed = 0;
 
-            if (Player.Instance.Input == Direction.Left && Player.Instance.CanMoveLeft)
+            float movementSpeed = 0;
+            if (Player.Instance.Input == Direction.Left && Player.Instance.MoveableDirections[Direction.Left])
             {
                 movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
                 transform.Translate(movementSpeed, 0f, 0f);
             }
-            else if (Player.Instance.Input == Direction.Right && Player.Instance.CanMoveRight)
+            else if (Player.Instance.Input == Direction.Right && Player.Instance.MoveableDirections[Direction.Right])
             {
                 movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
                 transform.Translate(movementSpeed, 0f, 0f);
             }
-            else if (Player.Instance.Input == Direction.Up && Player.Instance.CanMoveUp)
+            else if (Player.Instance.Input == Direction.Up && Player.Instance.MoveableDirections[Direction.Up])
             {
                 movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
                 transform.Translate(0f, movementSpeed, 0f);
             }
-            else if (Player.Instance.Input == Direction.Down && Player.Instance.CanMoveDown)
+            else if (Player.Instance.Input == Direction.Down && Player.Instance.MoveableDirections[Direction.Down])
             {
                 movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
                 transform.Translate(0f, movementSpeed, 0f);

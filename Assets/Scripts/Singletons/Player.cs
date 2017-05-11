@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Static;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Static;
 using UnityEngine;
 
 namespace Assets.Scripts.Singletons
@@ -9,11 +10,15 @@ namespace Assets.Scripts.Singletons
 
         public string Input = Direction.NoneKey;
         public string LastDirectionalInput = Direction.NoneKey;
-        public bool CanMoveRight = true;
-        public bool CanMoveLeft = true;
-        public bool CanMoveUp = true;
-        public bool CanMoveDown = true;
         public int Health = 3;
+
+        public Dictionary<string, bool> MoveableDirections = new Dictionary<string, bool>()
+        {
+            {"Up", true},
+            {"Down", true},
+            {"Left", true},
+            {"Right", true}
+        };
 
         void Awake()
         {

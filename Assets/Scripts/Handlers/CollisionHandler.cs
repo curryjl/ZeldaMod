@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Singletons;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Singletons;
 using Assets.Scripts.Static;
 using UnityEngine;
 
@@ -31,43 +32,23 @@ namespace Assets.Scripts.Handlers
                 {
                     if (raycastHit2D.collider != null && raycastHit2D.collider.tag == "Dungeon")
                     {
-                        if (Player.Instance.LastDirectionalInput == Direction.Up)
+                        // Needed to resolve out of sync issues: http://answers.unity3d.com/questions/409835/out-of-sync-error-when-iterating-over-a-dictionary.html
+                        var keys = new List<string>(Player.Instance.MoveableDirections.Keys);
+                        foreach (var direction in keys)
                         {
-                            Player.Instance.CanMoveUp = false;
-                            Player.Instance.CanMoveLeft = true;
-                            Player.Instance.CanMoveRight = true;
-                            Player.Instance.CanMoveDown = true;
-                        }
-                        else if (Player.Instance.LastDirectionalInput == Direction.Left)
-                        {
-                            Player.Instance.CanMoveLeft = false;
-                            Player.Instance.CanMoveUp = true;
-                            Player.Instance.CanMoveRight = true;
-                            Player.Instance.CanMoveDown = true;
-                        }
-                        else if (Player.Instance.LastDirectionalInput == Direction.Right)
-                        {
-                            Player.Instance.CanMoveRight = false;
-                            Player.Instance.CanMoveUp = true;
-                            Player.Instance.CanMoveLeft = true;
-                            Player.Instance.CanMoveDown = true;
-                        }
-                        else if (Player.Instance.LastDirectionalInput == Direction.Down)
-                        {
-                            Player.Instance.CanMoveDown = false;
-                            Player.Instance.CanMoveUp = true;
-                            Player.Instance.CanMoveRight = true;
-                            Player.Instance.CanMoveLeft = true;
+                            if (Player.Instance.LastDirectionalInput == direction)
+                                Player.Instance.MoveableDirections[direction] = false;
+                            else
+                                Player.Instance.MoveableDirections[direction] = true;
                         }
                     }
                 }
             }
             else
             {
-                Player.Instance.CanMoveDown = true;
-                Player.Instance.CanMoveUp = true;
-                Player.Instance.CanMoveRight = true;
-                Player.Instance.CanMoveLeft = true;
+                var keys = new List<string>(Player.Instance.MoveableDirections.Keys);
+                foreach (var moveableDirectionsKey in keys)
+                    Player.Instance.MoveableDirections[moveableDirectionsKey] = true;
             }
         }
 

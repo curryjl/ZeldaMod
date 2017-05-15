@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Singletons;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Singletons;
 using Assets.Scripts.Static;
 using UnityEngine;
 
@@ -15,12 +16,26 @@ namespace Assets.Scripts.Handlers
 
         void Update()
         {
-            SetAnimatorParamaters();
+            SetMovementAnimatorParamaters();
+            SetAttackAnimatorParameters();
         }
 
-        private void SetAnimatorParamaters()
+        private void SetAttackAnimatorParameters()
         {
-            foreach (var key in Direction.Directions)
+            if (Player.Instance.Input == Constants.Attack)
+            {
+                var keys = new List<string>(Constants.AttackDirections.Keys);
+                foreach (var key in keys)
+                {
+                    if (key == Player.Instance.LastDirectionalInput)
+                        Animator.SetTrigger(Constants.AttackDirections[key]);
+                }
+            }
+        }
+
+        private void SetMovementAnimatorParamaters()
+        {
+            foreach (var key in Constants.Directions)
             {
                 Animator.SetBool(key, Player.Instance.Input == key);
             }

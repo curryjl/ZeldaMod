@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Static
 {
-    public static class Direction
+    public static class Constants
     {
         public static readonly List<string> Directions = new List<string>()
         {
@@ -29,16 +29,26 @@ namespace Assets.Scripts.Static
             {"DownIsUp", "Down"}
         };
 
-        public static string Left = "Left";
-        public static string Right = "Right";
-        public static string Up = "Up";
-        public static string Down = "Down";
+        public static Dictionary<string, string> AttackDirections = new Dictionary<string, string>()
+        {
+            {"Left", "SwordSwingLeft"},
+            {"Right", "SwordSwingRight"},
+            {"Up", "SwordSwingUp"},
+            {"Down", "SwordSwingDown"}
+        };
 
-        public static string LeftKeyUp = "LeftIsUp";
-        public static string RightKeyUp = "RightIsUp";
-        public static string UpKeyUp = "UpIsUp";
-        public static string DownKeyUp = "DownIsUp";
+        public const string Left = "Left";
+        public const string Right = "Right";
+        public const string Up = "Up";
+        public const string Down = "Down";
 
-        public static string NoneKey = "None";
+        public const string LeftKeyUp = "LeftIsUp";
+        public const string RightKeyUp = "RightIsUp";
+        public const string UpKeyUp = "UpIsUp";
+        public const string DownKeyUp = "DownIsUp";
+
+        public const string Attack = "Space";
+
+        public const string NoneKey = "None";
     }
 }

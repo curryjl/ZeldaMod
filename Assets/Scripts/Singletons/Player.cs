@@ -8,8 +8,8 @@ namespace Assets.Scripts.Singletons
     {
         public static Player Instance { get; private set; }
 
-        public string Input = Direction.NoneKey;
-        public string LastDirectionalInput = Direction.NoneKey;
+        public string Input = Constants.NoneKey;
+        public string LastDirectionalInput = Constants.NoneKey;
         public int Health = 3;
 
         public Dictionary<string, bool> MoveableDirections = new Dictionary<string, bool>()

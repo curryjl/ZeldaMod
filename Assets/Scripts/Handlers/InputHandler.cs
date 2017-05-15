@@ -9,31 +9,34 @@ namespace Assets.Scripts.Handlers
         void Update()
         {
             Player.Instance.Input = GetInput();
-            if (Direction.Directions.Contains(Player.Instance.Input))
+            if (Constants.Directions.Contains(Player.Instance.Input))
                 Player.Instance.LastDirectionalInput = Player.Instance.Input;
         }
 
         private string GetInput()
         {
             if (Input.GetKey(KeyCode.A))
-                return Direction.Left;
+                return Constants.Left;
             if (Input.GetKey(KeyCode.D))
-                return Direction.Right;
+                return Constants.Right;
             if (Input.GetKey(KeyCode.W))
-                return Direction.Up;
+                return Constants.Up;
             if (Input.GetKey(KeyCode.S))
-                return Direction.Down;
+                return Constants.Down;
 
             if (Input.GetKeyUp(KeyCode.A))
-                return Direction.LeftKeyUp;
+                return Constants.LeftKeyUp;
             if (Input.GetKeyUp(KeyCode.D))
-                return Direction.RightKeyUp;
+                return Constants.RightKeyUp;
             if (Input.GetKeyUp(KeyCode.W))
-                return Direction.UpKeyUp;
+                return Constants.UpKeyUp;
             if (Input.GetKeyUp(KeyCode.S))
-                return Direction.DownKeyUp;
+                return Constants.DownKeyUp;
 
-            return Direction.NoneKey;
+            if (Input.GetKeyDown(KeyCode.Space))
+                return Constants.Attack; 
+
+            return Constants.NoneKey;
         }
     }
 }

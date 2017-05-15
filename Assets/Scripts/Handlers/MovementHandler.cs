@@ -21,22 +21,22 @@ namespace Assets.Scripts.Handlers
         {
 
             float movementSpeed = 0;
-            if (Player.Instance.Input == Direction.Left && Player.Instance.MoveableDirections[Direction.Left])
+            if (Player.Instance.Input == Constants.Left && Player.Instance.MoveableDirections[Constants.Left])
             {
                 movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
                 transform.Translate(movementSpeed, 0f, 0f);
             }
-            else if (Player.Instance.Input == Direction.Right && Player.Instance.MoveableDirections[Direction.Right])
+            else if (Player.Instance.Input == Constants.Right && Player.Instance.MoveableDirections[Constants.Right])
             {
                 movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
                 transform.Translate(movementSpeed, 0f, 0f);
             }
-            else if (Player.Instance.Input == Direction.Up && Player.Instance.MoveableDirections[Direction.Up])
+            else if (Player.Instance.Input == Constants.Up && Player.Instance.MoveableDirections[Constants.Up])
             {
                 movementSpeed = Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
                 transform.Translate(0f, movementSpeed, 0f);
             }
-            else if (Player.Instance.Input == Direction.Down && Player.Instance.MoveableDirections[Direction.Down])
+            else if (Player.Instance.Input == Constants.Down && Player.Instance.MoveableDirections[Constants.Down])
             {
                 movementSpeed = Mathf.Clamp(Speed * -1 * Time.deltaTime, Min, Max);
                 transform.Translate(0f, movementSpeed, 0f);

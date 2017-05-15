@@ -11,6 +11,7 @@ namespace Assets.Scripts.Singletons
         public string Input = Constants.NoneKey;
         public string LastDirectionalInput = Constants.NoneKey;
         public int Health = 3;
+        public int Armor = 1;
 
         public Dictionary<string, bool> MoveableDirections = new Dictionary<string, bool>()
         {

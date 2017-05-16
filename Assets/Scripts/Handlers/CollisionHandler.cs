@@ -55,7 +55,7 @@ namespace Assets.Scripts.Handlers
         private int CastRay()
         {
             if (Constants.Directions.Contains(Player.Instance.Input))
-                return _boxCollider2D.Raycast(Constants.VectorDirections[Player.Instance.Input], _results, RaycastLen);
+                return _boxCollider2D.Raycast(Constants.VectorByDirection[Player.Instance.Input], _results, RaycastLen);
             return 0;
         }
     }

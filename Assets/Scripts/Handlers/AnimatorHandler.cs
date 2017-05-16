@@ -24,11 +24,11 @@ namespace Assets.Scripts.Handlers
         {
             if (Player.Instance.Input == Constants.Attack)
             {
-                var keys = new List<string>(Constants.AttackDirections.Keys);
+                var keys = new List<string>(Constants.AttackAnimationByDirection.Keys);
                 foreach (var key in keys)
                 {
                     if (key == Player.Instance.LastDirectionalInput)
-                        Animator.SetTrigger(Constants.AttackDirections[key]);
+                        Animator.SetTrigger(Constants.AttackAnimationByDirection[key]);
                 }
             }
         }

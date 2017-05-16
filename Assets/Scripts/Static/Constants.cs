@@ -13,7 +13,28 @@ namespace Assets.Scripts.Static
             "Down",
         };
 
-        public static readonly Dictionary<string, Vector2> VectorDirections = new Dictionary<string, Vector2>()
+        public static readonly Vector2[] WisdomRoomPositions = new Vector2[]
+        {
+            new Vector2(-20f, 0f),
+            new Vector2(-20f, 1.7f),
+            new Vector2(-17.41f, 1.692f),
+            new Vector2(-22.59f, 1.692f),
+            new Vector2(-14.85f, 1.692f),
+            new Vector2(-17.4f, 3.41f),
+            new Vector2(-14.85f, 3.41f),
+            new Vector2(-17.39f, 5.11f),
+            new Vector2(-14.84f, 5.11f),
+            new Vector2(-17.35f, 6.84f),
+            new Vector2(-14.8f, 6.84f),
+            new Vector2(-17.367f, 8.543f),
+            new Vector2(-14.837f, 8.543f),
+            new Vector2(-17.365f, 10.237f),
+            new Vector2(-14.818f, 10.237f),
+            new Vector2(-17.38f, 11.92f),
+            new Vector2(-19.93f, 11.92f)
+        };
+
+        public static readonly Dictionary<string, Vector2> VectorByDirection = new Dictionary<string, Vector2>()
         {
             {"Up", Vector2.up},
             {"Down", Vector2.down},
@@ -29,13 +50,15 @@ namespace Assets.Scripts.Static
             {"DownIsUp", "Down"}
         };
 
-        public static Dictionary<string, string> AttackDirections = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> AttackAnimationByDirection = new Dictionary<string, string>()
         {
             {"Left", "SwordSwingLeft"},
             {"Right", "SwordSwingRight"},
             {"Up", "SwordSwingUp"},
             {"Down", "SwordSwingDown"}
         };
+
+        public const int WisdomRoomCount = 17;
 
         public const string Left = "Left";
         public const string Right = "Right";
@@ -48,7 +71,9 @@ namespace Assets.Scripts.Static
         public const string DownKeyUp = "DownIsUp";
 
         public const string Attack = "Space";
-
         public const string NoneKey = "None";
+        public const string ChoiceRoom = "ChoiceRoom";
+
+        public static readonly Vector3 PlayerStartPosition = new Vector3(0f, -.5f, 0f);
     }
 }

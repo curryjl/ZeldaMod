@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Assets.Scripts.Managers;
 using Assets.Scripts.Singletons;
 using Assets.Scripts.Static;
 using UnityEngine;
@@ -41,6 +43,12 @@ namespace Assets.Scripts.Handlers
                             else
                                 Player.Instance.MoveableDirections[direction] = true;
                         }
+                    }
+                    else if (raycastHit2D.collider != null && raycastHit2D.collider.name == "WisdomEntrance")
+                    {
+                        DungeonManager.Instance.UpdateCurrentRoom("WisdomEntrance");
+                        Player.Instance.transform.position = new Vector3(-18.95f, -0.02f);
+                        GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 0f, -10f);
                     }
                 }
             }

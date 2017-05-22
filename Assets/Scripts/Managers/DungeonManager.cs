@@ -9,19 +9,49 @@ namespace Assets.Scripts.Managers
 {
     public class DungeonManager : MonoBehaviour
     {
-        public GameObject[] WisdomDungeon = new GameObject[Constants.WisdomRoomCount];
-        public readonly Dictionary<GameObject, Vector2> WisdomRoomsByPosition = new Dictionary<GameObject, Vector2>();
+        private GameObject _choiceRoom;
+        private readonly GameObject[] _wisdomDungeon = new GameObject[Constants.WisdomRoomCount];
+        private GameObject _currentRoom;
+
+        public static DungeonManager Instance { get; private set; }
+
+
 
         void Awake()
         {
-            InitializeRooms();
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+                Destroy(gameObject);
+
+            _choiceRoom = GameObject.Find("ChoiceRoom");
+            for (var i = 0; i < Constants.WisdomRoomCount; i++)
+                _wisdomDungeon[i] = GameObject.Find("WisdomDungeon").transform.GetChild(i).gameObject;
+
+            DisableRooms();
+            _currentRoom = _choiceRoom;
         }
 
-        private void InitializeRooms()
+        private void DisableRooms()
         {
-            for (int i = 0; i < Constants.WisdomRoomCount; i++)
+            foreach (var room in _wisdomDungeon)
+                room.gameObject.SetActive(false);
+        }
+
+        public void UpdateCurrentRoom(string room)
+        {
+            switch (room)
             {
-                WisdomRoomsByPosition.Add(WisdomDungeon[i], Constants.WisdomRoomPositions[i]);
+                case "WisdomEntrance":
+                    _currentRoom = _wisdomDungeon[0];
+                    _currentRoom.SetActive(true);
+                    _choiceRoom.gameObject.SetActive(false);
+                    break;
+                default:
+                    break;
             }
         }
     }

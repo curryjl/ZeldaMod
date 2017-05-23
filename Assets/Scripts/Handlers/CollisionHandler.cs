@@ -32,23 +32,23 @@ namespace Assets.Scripts.Handlers
             {
                 foreach (var raycastHit2D in _results)
                 {
-                    if (raycastHit2D.collider != null && raycastHit2D.collider.tag == "Dungeon")
+                    if (raycastHit2D.collider != null)
                     {
-                        // Needed to resolve out of sync issues: http://answers.unity3d.com/questions/409835/out-of-sync-error-when-iterating-over-a-dictionary.html
-                        var keys = new List<string>(Player.Instance.MoveableDirections.Keys);
-                        foreach (var direction in keys)
+                        if (raycastHit2D.collider.tag == Constants.DungeonTag)
                         {
-                            if (Player.Instance.LastDirectionalInput == direction)
-                                Player.Instance.MoveableDirections[direction] = false;
-                            else
-                                Player.Instance.MoveableDirections[direction] = true;
+                            // Needed to resolve out of sync issues: http://answers.unity3d.com/questions/409835/out-of-sync-error-when-iterating-over-a-dictionary.html
+                            var keys = new List<string>(Player.Instance.MoveableDirections.Keys);
+                            foreach (var direction in keys)
+                            {
+                                if (Player.Instance.LastDirectionalInput == direction)
+                                    Player.Instance.MoveableDirections[direction] = false;
+                                else
+                                    Player.Instance.MoveableDirections[direction] = true;
+                            }
                         }
-                    }
-                    else if (raycastHit2D.collider != null && raycastHit2D.collider.name == "WisdomEntrance")
-                    {
-                        DungeonManager.Instance.UpdateCurrentRoom("WisdomEntrance");
-                        Player.Instance.transform.position = new Vector3(-18.95f, -0.02f);
-                        GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 0f, -10f);
+                        
+                        TraverseDungeon(raycastHit2D);
+                        ClearCollider(raycastHit2D);
                     }
                 }
             }
@@ -65,6 +65,42 @@ namespace Assets.Scripts.Handlers
             if (Constants.Directions.Contains(Player.Instance.Input))
                 return _boxCollider2D.Raycast(Constants.VectorByDirection[Player.Instance.Input], _results, RaycastLen);
             return 0;
+        }
+
+        private void ClearCollider(RaycastHit2D raycastHit2D)
+        {
+            raycastHit2D.collider.name = string.Empty;
+        }
+
+        private void TraverseDungeon(RaycastHit2D raycastHit2D)
+        {
+            List<string> entrances = new List<string>(Constants.PositionByWisdomRooms.Keys);
+
+            if (entrances.Contains(raycastHit2D.collider.name))
+            {
+                DungeonManager.Instance.UpdateCurrentRoom(raycastHit2D.collider.name);
+                Player.Instance.transform.position = Constants.PositionByWisdomRooms[raycastHit2D.collider.name];
+                GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 0f, -10f);
+            }
+
+            //switch (raycastHit2D.collider.name)
+            //{
+            //    case Constants.WisdomRoomEntrance:
+            //        DungeonManager.Instance.UpdateCurrentRoom(Constants.WisdomRoomEntrance);
+            //        Player.Instance.transform.position = new Vector3(-20f, -0.436f);
+            //        GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 0f, -10f);
+            //        break;
+            //    case Constants.WisdomRoom1To2:
+            //        DungeonManager.Instance.UpdateCurrentRoom(Constants.WisdomRoom1To2);
+            //        Player.Instance.transform.position = new Vector3(-20f, 1.096f);
+            //        GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 1.69f, -10f);
+            //        break;
+            //    case Constants.WisdomRoom2To1:
+            //        DungeonManager.Instance.UpdateCurrentRoom(Constants.WisdomRoom1To2);
+            //        Player.Instance.transform.position = new Vector3(-20f, 1.096f);
+            //        GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 1.69f, -10f);
+            //        break;
+            //}
         }
     }
 }

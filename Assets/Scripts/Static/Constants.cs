@@ -74,6 +74,25 @@ namespace Assets.Scripts.Static
         public const string NoneKey = "None";
         public const string ChoiceRoom = "ChoiceRoom";
 
+        public const string DungeonTag = "Dungeon";
+
+        public static readonly Dictionary<string, Vector2> PositionByWisdomRooms = new Dictionary<string, Vector2>()
+        {
+            {"WisdomRoomEntrance", new Vector2(-20f, -0.436f)},
+            {"WR1TO2", new Vector3(-20f, 1.096f)},
+            {"WR2TO1", new Vector3(-20f, 1.096f)}
+
+        };
+
+        public static readonly Dictionary<GameObject, Vector3> CameraPositionByRoom = new Dictionary<GameObject, Vector3>()
+        {
+                
+        };
+
+        public const string WisdomRoomEntrance = "WisdomRoomEntrance";
+        public const string WisdomRoom1To2 = "WR1TO2";
+        public const string WisdomRoom2To1 = "WR2TO1";
+
         public static readonly Vector3 PlayerStartPosition = new Vector3(0f, -.5f, 0f);
     }
 }

@@ -10,8 +10,8 @@ namespace Assets.Scripts.Managers
     public class DungeonManager : MonoBehaviour
     {
         private GameObject _choiceRoom;
-        private readonly GameObject[] _wisdomDungeon = new GameObject[Constants.WisdomRoomCount];
         private GameObject _currentRoom;
+        private readonly GameObject[] _wisdomDungeon = new GameObject[Constants.WisdomRoomCount];
 
         public static DungeonManager Instance { get; private set; }
 
@@ -45,10 +45,15 @@ namespace Assets.Scripts.Managers
         {
             switch (room)
             {
-                case "WisdomEntrance":
+                case "WisdomRoomEntrance":
+                    _currentRoom.SetActive(false);
                     _currentRoom = _wisdomDungeon[0];
                     _currentRoom.SetActive(true);
-                    _choiceRoom.gameObject.SetActive(false);
+                    break;
+                case Constants.WisdomRoom1To2:
+                    _currentRoom.SetActive(false);
+                    _currentRoom = _wisdomDungeon[1];
+                    _currentRoom.SetActive(true);
                     break;
                 default:
                     break;

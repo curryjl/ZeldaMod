@@ -8,21 +8,18 @@ namespace Assets.Scripts.StateMachine.States
 {
     public class BaseState
     {
-        internal const float Min = -0.010f;
-        internal const float Max = 0.010f;
-        internal const float Speed = .75f;
-        internal float MovementSpeed = 0;
+        internal string Input;
+        private PlayerContext _context;
 
-        internal PlayerContext Context;
-
-        internal void SetContext(PlayerContext context)
+        internal void SetBaseState(PlayerContext context, string input)
         {
-            Context = context;
+            _context = context;
+            Input = input;
         }
 
-        internal void UpdateState()
+        internal void UpdateState(IHandler handler)
         {
-            Context.SetState(new Idle());
+            _context.SetState(new Idle());
         }
     }
 }

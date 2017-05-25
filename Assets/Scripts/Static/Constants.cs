@@ -13,6 +13,14 @@ namespace Assets.Scripts.Static
             "Down",
         };
 
+        public static readonly List<string> KeysUpList = new List<string>()
+        {
+            "LeftIsUp",
+            "RightIsUp",
+            "UpIsUp",
+            "DownIsUp"
+        };
+
         public static readonly Vector2[] WisdomRoomPositions = new Vector2[]
         {
             new Vector2(-20f, 0f),

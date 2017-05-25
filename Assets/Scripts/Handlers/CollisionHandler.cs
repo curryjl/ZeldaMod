@@ -82,25 +82,6 @@ namespace Assets.Scripts.Handlers
                 Player.Instance.transform.position = Constants.PositionByWisdomRooms[raycastHit2D.collider.name];
                 GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 0f, -10f);
             }
-
-            //switch (raycastHit2D.collider.name)
-            //{
-            //    case Constants.WisdomRoomEntrance:
-            //        DungeonManager.Instance.UpdateCurrentRoom(Constants.WisdomRoomEntrance);
-            //        Player.Instance.transform.position = new Vector3(-20f, -0.436f);
-            //        GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 0f, -10f);
-            //        break;
-            //    case Constants.WisdomRoom1To2:
-            //        DungeonManager.Instance.UpdateCurrentRoom(Constants.WisdomRoom1To2);
-            //        Player.Instance.transform.position = new Vector3(-20f, 1.096f);
-            //        GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 1.69f, -10f);
-            //        break;
-            //    case Constants.WisdomRoom2To1:
-            //        DungeonManager.Instance.UpdateCurrentRoom(Constants.WisdomRoom1To2);
-            //        Player.Instance.transform.position = new Vector3(-20f, 1.096f);
-            //        GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 1.69f, -10f);
-            //        break;
-            //}
         }
     }
 }

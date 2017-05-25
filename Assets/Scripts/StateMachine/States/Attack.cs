@@ -1,7 +1,5 @@
 ﻿using System;
 using Assets.Scripts.StateMachine.Interfaces;
-using Assets.Scripts.Static;
-using NUnit.Framework.Constraints;
 
 namespace Assets.Scripts.StateMachine.States
 {

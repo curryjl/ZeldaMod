@@ -1,22 +1,18 @@
 ﻿using System.Linq;
+using System.Runtime.InteropServices;
 using Assets.Scripts.StateMachine.Interfaces;
+using Assets.Scripts.Static;
 
 namespace Assets.Scripts.StateMachine.States
 {
-    public class Idle : BaseState, IHandler
+    public class Idle : IHandler
     {
         public void HandleInput(string input, PlayerContext context)
         {
-            SetContext(context);
-            
-            if (input == "Left")
-                base.Context.SetState(new MoveLeft());
-            if (input == "Right")
-                base.Context.SetState(new MoveRight());
-            if (input == "Up")
-                base.Context.SetState(new MoveUp());
-            if (input == "Down")
-                base.Context.SetState(new MoveDown());
+            if (Constants.Directions.Contains(input))
+                context.SetState(new Move());
+            else if (Constants.Attack == input)
+                context.SetState(new Attack());
         }
     }
 }

@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Assets.Scripts.Static;
+using Assets.Scripts.Design;
+using Assets.Scripts.Singletons;
 using UnityEngine;
 
 namespace Assets.Scripts.Managers
 {
     public class DungeonManager : MonoBehaviour
     {
-        private GameObject _choiceRoom;
         private GameObject _currentRoom;
-        private readonly GameObject[] _wisdomDungeon = new GameObject[Constants.WisdomRoomCount];
+        private Dungeon _wisdomDungeon;
+        private string _collision;
+
+        public GameObject ChoiceRoom;
 
         public static DungeonManager Instance { get; private set; }
 
-
+        private readonly List<string> _doors = new List<string>() { "NorthDoor", "SouthDoor", "WestDoor", "EastDoor" };
 
         void Awake()
         {
@@ -26,38 +27,88 @@ namespace Assets.Scripts.Managers
             }
             else
                 Destroy(gameObject);
+            InitializeDungeon();
+        }
 
-            _choiceRoom = GameObject.Find("ChoiceRoom");
-            for (var i = 0; i < Constants.WisdomRoomCount; i++)
-                _wisdomDungeon[i] = GameObject.Find("WisdomDungeon").transform.GetChild(i).gameObject;
+        void Update()
+        {
+            MonitorCollision();
+        }
 
+        void OnApplicationQuit()
+        {
+            ChoiceRoom.SetActive(true);
+        }
+
+        public void SetCollision(string collision)
+        {
+            _collision = collision;
+        }
+
+        private void InitializeDungeon()
+        {
+            _wisdomDungeon = GameObject.Find("WisdomDungeon").GetComponent<Dungeon>();
             DisableRooms();
-            _currentRoom = _choiceRoom;
+
+            _currentRoom = ChoiceRoom;
         }
 
         private void DisableRooms()
         {
-            foreach (var room in _wisdomDungeon)
-                room.gameObject.SetActive(false);
+            foreach (var wisdomDungeonRoom in _wisdomDungeon.Rooms)
+                wisdomDungeonRoom.SetActive(false);
         }
 
-        public void UpdateCurrentRoom(string room)
+        private void MonitorCollision()
         {
-            switch (room)
+            var doors = _currentRoom.GetComponentsInChildren<Door>();
+
+
+            switch (_collision)
             {
                 case "WisdomRoomEntrance":
-                    _currentRoom.SetActive(false);
-                    _currentRoom = _wisdomDungeon[0];
-                    _currentRoom.SetActive(true);
-                    break;
-                case Constants.WisdomRoom1To2:
-                    _currentRoom.SetActive(false);
-                    _currentRoom = _wisdomDungeon[1];
-                    _currentRoom.SetActive(true);
+                    SetDungeonRoom(_currentRoom.GetComponentInChildren<Door>().ConnectedRoom, _collision);
                     break;
                 default:
                     break;
             }
+
+            if (_doors.Contains(_collision))
+            {
+                var door = doors.FirstOrDefault(x => x.name == _collision);
+                if (door != null)
+                    SetDungeonRoom(door.ConnectedRoom, _collision);
+            }
+
+            _collision = string.Empty;
+        }
+
+        private void SetDungeonRoom(GameObject connectedRoom, string doorHit)
+        {
+            _currentRoom.SetActive(false);
+            _currentRoom = _wisdomDungeon.Rooms.FirstOrDefault(x => x.name == connectedRoom.name);
+
+            if (_currentRoom != null)
+            {
+                _currentRoom.SetActive(true);
+                _currentRoom.GetComponent<Room>().Player = Player.Instance.gameObject;
+
+                SetCameraPosition(new Vector3(_currentRoom.transform.position.x, _currentRoom.transform.position.y, -10f));
+
+                // Special Case
+                if (doorHit == "WisdomRoomEntrance")
+                    SetPlayerPositionInRoom(new Vector3(-20f, -0.436f));
+            }
+        }
+
+        private void SetPlayerPositionInRoom(Vector3 position)
+        {
+            Player.Instance.transform.position = position;
+        }
+
+        private void SetCameraPosition(Vector3 cameraPosition)
+        {
+            GameManager.Instance.MainCamera.transform.position = cameraPosition;
         }
     }
 }

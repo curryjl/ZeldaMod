@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Runtime.InteropServices;
-using Assets.Scripts.StateMachine.Interfaces;
+﻿using Assets.Scripts.StateMachine.Interfaces;
 using Assets.Scripts.Static;
 
 namespace Assets.Scripts.StateMachine.States

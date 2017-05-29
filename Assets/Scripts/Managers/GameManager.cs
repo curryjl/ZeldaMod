@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.Static;
+﻿using Assets.Scripts.Static;
 using UnityEngine;
 
 namespace Assets.Scripts.Managers
@@ -10,11 +9,8 @@ namespace Assets.Scripts.Managers
         public GameObject Player;
         public GameObject MainCamera;
 
-        private GameObject _playersCurrentPosition;
-
 
         public static GameManager Instance { get; private set; }
-
 
 
         void Awake()
@@ -31,7 +27,6 @@ namespace Assets.Scripts.Managers
             InstantiateDungeon();
             InstantiatePlayer();
             ConnectCameraToGameManager();
-            SetPlayersCurrentPosition();
         }
 
         private void InstantiateDungeon()
@@ -47,11 +42,6 @@ namespace Assets.Scripts.Managers
         private void ConnectCameraToGameManager()
         {
             MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        }
-
-        private void SetPlayersCurrentPosition()
-        {
-            _playersCurrentPosition = GameObject.Find(Constants.ChoiceRoom);
         }
     }
 }

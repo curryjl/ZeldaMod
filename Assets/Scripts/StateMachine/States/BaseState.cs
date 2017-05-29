@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Assets.Scripts.StateMachine.Interfaces;
+﻿using Assets.Scripts.StateMachine.Interfaces;
 
 namespace Assets.Scripts.StateMachine.States
 {
-    public class BaseState
+    public abstract class BaseState
     {
         internal string Input;
         private PlayerContext _context;

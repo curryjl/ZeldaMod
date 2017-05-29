@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Assets.Scripts.Singletons;
+﻿using Assets.Scripts.Singletons;
 using Assets.Scripts.StateMachine.Interfaces;
 using Assets.Scripts.Static;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Assets.Scripts.StateMachine.States
@@ -26,9 +21,6 @@ namespace Assets.Scripts.StateMachine.States
                 SetMovementVector(input, movementSpeed);
                 UpdatePlayer(_vector);
             }
-
-            if (Constants.KeysUpList.Contains(input))
-                context.SetState(new Idle());
         }
 
         private bool CanMove(string input)
@@ -55,9 +47,9 @@ namespace Assets.Scripts.StateMachine.States
             return Mathf.Clamp(Speed * 1 * Time.deltaTime, Min, Max);
         }
 
-        private void UpdatePlayer(Vector3 movementSpeed)
+        private void UpdatePlayer(Vector3 vector)
         {
-            Player.Instance.transform.Translate(movementSpeed);
+            Player.Instance.transform.Translate(vector);
         }
     }
 }

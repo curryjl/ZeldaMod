@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.Singletons;
+﻿using Assets.Scripts.Singletons;
 using Assets.Scripts.StateMachine.Interfaces;
 using Assets.Scripts.StateMachine.States;
 using UnityEngine;
@@ -28,7 +27,8 @@ namespace Assets.Scripts.StateMachine
 
         private void HandleInput()
         {
-            _currentState.HandleInput(Player.Instance.Input, this);
+            if (Player.Instance.Input != null)
+                _currentState.HandleInput(Player.Instance.Input, this);
         }
     }
 }

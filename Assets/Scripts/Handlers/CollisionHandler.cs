@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Managers;
 using Assets.Scripts.Singletons;
 using Assets.Scripts.Static;
@@ -46,9 +45,8 @@ namespace Assets.Scripts.Handlers
                                     Player.Instance.MoveableDirections[direction] = true;
                             }
                         }
-                        
-                        TraverseDungeon(raycastHit2D);
-                        ClearCollider(raycastHit2D);
+
+                        DungeonManager.Instance.SetCollision(raycastHit2D.collider.name);
                     }
                 }
             }
@@ -65,23 +63,6 @@ namespace Assets.Scripts.Handlers
             if (Constants.Directions.Contains(Player.Instance.Input))
                 return _boxCollider2D.Raycast(Constants.VectorByDirection[Player.Instance.Input], _results, RaycastLen);
             return 0;
-        }
-
-        private void ClearCollider(RaycastHit2D raycastHit2D)
-        {
-            raycastHit2D.collider.name = string.Empty;
-        }
-
-        private void TraverseDungeon(RaycastHit2D raycastHit2D)
-        {
-            List<string> entrances = new List<string>(Constants.PositionByWisdomRooms.Keys);
-
-            if (entrances.Contains(raycastHit2D.collider.name))
-            {
-                DungeonManager.Instance.UpdateCurrentRoom(raycastHit2D.collider.name);
-                Player.Instance.transform.position = Constants.PositionByWisdomRooms[raycastHit2D.collider.name];
-                GameManager.Instance.MainCamera.transform.position = new Vector3(-20f, 0f, -10f);
-            }
         }
     }
 }

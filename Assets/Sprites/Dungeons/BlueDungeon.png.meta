@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: adbce08aa132d7a418169315f9ea5bae
-timeCreated: 1494474747
+timeCreated: 1496013792
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -91,10 +91,10 @@ TextureImporter:
       name: BlueDungeon_0
       rect:
         serializedVersion: 2
-        x: 256
+        x: 264
         y: 1176
-        width: 255
-        height: 168
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -104,10 +104,10 @@ TextureImporter:
       name: BlueDungeon_1
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1178
-        width: 255
-        height: 166
+        x: 520
+        y: 1176
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,10 +117,10 @@ TextureImporter:
       name: BlueDungeon_2
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1004
-        width: 256
-        height: 169
+        x: 520
+        y: 1008
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,10 +130,10 @@ TextureImporter:
       name: BlueDungeon_3
       rect:
         serializedVersion: 2
-        x: 769
-        y: 1005
-        width: 252
-        height: 169
+        x: 776
+        y: 1008
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,10 +143,10 @@ TextureImporter:
       name: BlueDungeon_4
       rect:
         serializedVersion: 2
-        x: 513
-        y: 836
-        width: 256
-        height: 166
+        x: 520
+        y: 840
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +156,10 @@ TextureImporter:
       name: BlueDungeon_5
       rect:
         serializedVersion: 2
-        x: 770
-        y: 837
-        width: 250
-        height: 166
+        x: 776
+        y: 840
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: BlueDungeon_6
       rect:
         serializedVersion: 2
-        x: 513
-        y: 668
-        width: 255
-        height: 167
+        x: 520
+        y: 672
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +182,10 @@ TextureImporter:
       name: BlueDungeon_7
       rect:
         serializedVersion: 2
-        x: 770
-        y: 669
-        width: 251
-        height: 167
+        x: 776
+        y: 672
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: BlueDungeon_8
       rect:
         serializedVersion: 2
-        x: 513
-        y: 499
-        width: 255
-        height: 169
+        x: 520
+        y: 504
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,10 +208,10 @@ TextureImporter:
       name: BlueDungeon_9
       rect:
         serializedVersion: 2
-        x: 769
-        y: 500
-        width: 252
-        height: 168
+        x: 776
+        y: 504
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,10 +221,10 @@ TextureImporter:
       name: BlueDungeon_10
       rect:
         serializedVersion: 2
-        x: 514
-        y: 333
-        width: 254
-        height: 165
+        x: 520
+        y: 336
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: BlueDungeon_11
       rect:
         serializedVersion: 2
-        x: 770
-        y: 333
-        width: 251
-        height: 167
+        x: 776
+        y: 336
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: BlueDungeon_12
       rect:
         serializedVersion: 2
-        x: 2
+        x: 8
         y: 168
-        width: 254
-        height: 165
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +260,10 @@ TextureImporter:
       name: BlueDungeon_13
       rect:
         serializedVersion: 2
-        x: 257
-        y: 167
-        width: 255
-        height: 166
+        x: 264
+        y: 168
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,10 +273,10 @@ TextureImporter:
       name: BlueDungeon_14
       rect:
         serializedVersion: 2
-        x: 513
-        y: 167
-        width: 253
-        height: 166
+        x: 520
+        y: 168
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,10 +286,10 @@ TextureImporter:
       name: BlueDungeon_15
       rect:
         serializedVersion: 2
-        x: 769
+        x: 776
         y: 168
-        width: 252
-        height: 165
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,10 +299,10 @@ TextureImporter:
       name: BlueDungeon_16
       rect:
         serializedVersion: 2
-        x: 258
+        x: 264
         y: 0
-        width: 255
-        height: 165
+        width: 240
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -314,7 +314,7 @@ TextureImporter:
         serializedVersion: 2
         x: 514
         y: 0
-        width: 249
+        width: 255
         height: 165
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
